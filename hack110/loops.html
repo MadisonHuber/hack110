@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loops</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap's Style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+    
+
+
+</head>
+<body>
+
+
+
+
+    <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+        <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+          <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          COMP110 Review
+        </a>
+        <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        
+        <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+      </nav>
+
+
+
+<br>
+    <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Loops</h1>
+<div style="margin-left:10px; margin-right:10px">
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+    <p style="margin-left:40px">Loops make it nicer to do something repeatedly. Instead of rewriting the same code each time we want to use it, we can put it in a loop and tell the loop how many times to do it.</p>
+
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+    <p style="margin-left:40px">We can use loops to do stuff over and over. To do so, we need to specify how many times the loop should execute and keep track of how many times it has already executed. We need to be sure to give a definite condition that will eventually be false so as to avoid infinite loops.</p>
+
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Making Loops</h2>
+    <p style="margin-left:40px">When using loops, we can either use a while loop or a for loop to get the job done.</p>
+    <h3 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; margin-left:20px">While Loops</h3>
+    <!-- <p style="margin-left:40px">while (condition) {</p>
+        <p style="margin-left:5em">// do something</p>
+        <p style="margin-left:40px">}</p> -->
+    <pre><code>
+        while (condition) {
+            // do something
+        }
+    </code></pre>
+    <p style="margin-left:40px">When using while loops, we usually need to create a counter variable before entering the loop. This will be incremented within the loop, then used with the given condition. When the condition evaluates to true, we enter the loop, and when it's false we don't.</p>
+    <h4 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; margin-left:30px">Example While Loop</h4>    
+    <!-- <p style="margin-left:40px">let i: number = 0;
+        <br>
+        while (i < 10) {
+            <br>
+            <t style="margin-left:3em">print(i);</t>
+            <br>
+            <t style="margin-left:3em">i++;</t>
+            <br>
+        }
+    </p> -->
+    <pre><code>
+        let i: number = 0;
+        while (i < 10) {
+            print(i);
+            i++;
+        }
+    </code></pre>
+    <h3 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; margin-left:20px">For Loops</h3>
+    <!-- <p style="margin-left:40px">for (let counter: number = value; condition; counter++) {</p>
+        <p style="margin-left:5em">// do something</p>
+        <p style="margin-left:40px">}</p> -->
+    <pre><code>
+        for (let counter: number = value; condition; counter++) {
+            // do something
+        }
+    </code></pre>
+        <p style="margin-left:40px">In a for loop, the creation of the counter variable, the condition, and the incrementing of the counter all happen within the parentheses (). First, the counter is created, then the condition is checked, then the stuff within the loop happens, then the counter is incremented, then the condition checked again....</p>        
+    <h4 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; margin-left:30px">Example For Loop</h4>    
+    <!-- <p style="margin-left:40px">for (let i: number = 0; i < 10; i++) {
+            <br>
+            <t style="margin-left:3em">print(i);</t>
+            <br>
+        }
+    </p> -->
+    <pre><code>
+        for (let i: number = 0; i < 10; i++) {
+            print(i);
+        }
+    </code></pre>
+    <p style="margin-left:40px">Depending on the condition, we may need to decrement the counter or make other modifications to it instead of incrementing so that it will get closer to stopping the loop by making the condition false.</p>
+    
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+    <ul>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/while-loops">COMP110 Video for While Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/cuu3l9igneu">COMP110 Video for For Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/loops">COMP110 Topics Page for Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/07-arrays-and-while-loops.pdf">COMP110 Lecture Slides for While Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/13-Higher-order-Functions.pdf">COMP110 Lecture Slides for For Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-3.pdf">COMP110 Review Slides on While Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-6.pdf">COMP110 Review Slides on For Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/WS3-1.pdf">COMP110 WS on While Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/worksheets/WS4-Functional-Interfaces.pdf">COMP110 WS on For Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-WS4.pdf">COMP110 Optional WS on While Loops</a></li> 
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-01-spring/Review-Session-WS5.pdf">COMP110 Optional WS on For Loops</a></li>    
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-01-spring/Review-Session-WS6.pdf">Another COMP110 Optional WS on For Loops</a></li>                                
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Midterm-Review-Optional-Worksheet.pdf">One More COMP110 Optional WS on For Loops</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Optional-WS8.pdf">COMP110 Optional WS on Nested Loops</a></li>
+            
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.tutorialspoint.com/typescript/typescript_while_loop.htm">While Loops on tutorialspoint</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.tutorialspoint.com/typescript/typescript_for_loop.htm">For Loops on tutorialspoint</a></li>
+            <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+            </ul>
+    
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+</div>
+</body>
+</html>

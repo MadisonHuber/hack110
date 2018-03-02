@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Functional Programming</title>
+        
+        <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+
+
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Bootstrap's Style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+        
+        
+
+
+    </head>
+    <body>
+
+
+
+        <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+            <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+              <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+              COMP110 Review
+            </a>
+            <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+            
+            <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+          </nav>
+
+<br>
+        <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Functional Programming</h1>
+    <div style="margin-left:10px; margin-right:10px">
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+        <p style="margin-left:40px">We'll start by going into functional interfaces, and we'll see how these relate to using filter, map, and reduce on arrays. Functional interfaces help us know more about functions so we can do more with them. So far, we've been giving types to everything. But what about functions? We use functional interfaces to give our functions types!</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+        <p style="margin-left:40px">A function's type includes the quantity, type, and order of its parameters as well as its return type. We use functional interfaces to specify all of this! Functional interfaces assign a name to a type of function. We can then use this type to make variables that hold references (REFERENCE TYPE ALERT!!!) to functions.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Making Functional Interfaces</h2>
+        <p style="margin-left:40px">Making functional interfaces isn't too bad, we just indicate that it's an interface then fill it with all the things we want to specify about any functions that are going to fit this interface.</p>
+        <!-- <p style="margin-left:40px">interface NameOfInterface {</p>
+            <p style="margin-left:5em">(parameter0: type, parameter1: type): type;</p>
+        <p style="margin-left:40px">}</p> -->
+        <pre><code>
+        interface NameOfInterface {
+            (paramter0: type, parameter1: type): type;
+        }
+        </code></pre>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Predicate, Transform, Reducer, and Generics</h2>
+        <!-- <p style="margin-left:40px">interface Predicate&#60;T&#62; {</p>
+            <p style="margin-left:5em">(element: T): boolean;</p>
+        <p style="margin-left:40px">}</p>
+        <p style="margin-left:40px">interface Transform&#60;T, U&#62; {</p>
+            <p style="margin-left:5em">(element: T): U;</p>
+        <p style="margin-left:40px">}</p>
+        <p style="margin-left:40px">interface Reducer&#60;T, U&#62; {</p>
+            <p style="margin-left:5em">(memo: U, element: T): U;</p>
+        <p style="margin-left:40px">}</p> -->
+        <pre><code>
+        interface Predicate&#60;T&#62; {
+            (element: T): boolean;
+        }
+        
+        interface Transform&#60;T, U&#62; {
+            (element: T): U;
+        }
+
+        interface Reducer&#60;T, U&#62; {
+            (memo: U, element: T): U;
+        }
+        </code></pre>
+        <p style="margin-left:40px">WAIT! What's up with the T and U stuff? In these functional interfaces, we've decided to make them generic so they can apply to more things. We're using generics to do so. By saying &#60;T&#62; or &#60;T, U&#62;, we're making the functional interface generic "for any type T" or "for any types T and U." When we want to do things with these, we substitute the types we want in for T and U.</p>
+        <p style="margin-left:40px">Functional interfaces act like contracts and give us the framework for certain functions that will fit that new type, but they leave it up to us to decide what we want our functions to actually do.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Examples Using Predicate, Transform, and Reducer</h2>
+        <!-- <p style="margin-left:40px">function isNegative(n: number): boolean {</p>
+            <p style="margin-left:5em">return n &#60; 0;</p>
+        <p style="margin-left:40px">}</p>
+        <p style="margin-left:40px">let test: Predicate&#60;number&#62;;</p>
+        <p style="margin-left:40px">test = isNegative;</p> -->
+        <pre><code>
+        function isNegative(n: number): boolean {
+            return n < 0;
+        }
+
+        let test: Predicate&#60;number&#62;;
+        test = isNegative;
+        </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">We use the functions that satisfy the Predicate interface when we filter arrays. We can do this by calling the filter method on an array and passing in as an argument a function that satisfies the Predicate interface. This does mean that we're using functions as parameters now! How exciting! The function we pass in must be of type Predicate&#60;T&#62;, where this T matches the type (T[]) of the array on which the filter method is called. Filtering an array tests the elements within the array against some condition, and usually returns a smaller array that contains only the elements that passed this test. When we filter an array, each element in the array is passed in and checked with the Predicate function, and elements that return true from this check are then copied to the returned array.</p>
+        <!-- <p style="margin-left:40px">let negativeNumbers: number[] = [-2, -1, 0, 1].filter(test);</p>
+        <p style="margin-left:40px">// negativeNumbers is now the array [-2, -1]</p> -->
+        <pre><code>
+        let negativeNumbers: number[] = [-2, -1, 0, 1].filter(test);
+        // negativeNumbers is now the array [-2, -1]
+        </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">Great! That wasn't so bad! Now we'll move on and look at Transform and the map method that we can call on arrays.</p>
+        <p style="margin-left:40px; color:#7BAFD4">When we call the map method on an array, we're doing something to all the elements in the array to change them in some way (transform them). We then return an array of the transformed elements. Thus, the returned array has the same length as the original array. Let's take a look:</p>
+        <!-- <p style="margin-left:40px">function allEvenString(n: number): string {</p>
+            <p style="margin-left:5em">return "" + n * 2;</p>
+        <p style="margin-left:40px">}</p>
+        <p style="margin-left:40px">let multiplyString: Transform&#60;number, string&#62; = allEvenString;</p>
+        <p style="margin-left:40px">let newStringArray: string[] = negativeNumbers.map(multiplyString);</p>
+        <p style="margin-left:40px">// newStringArray is now the array ["-4", "-2"]</p> -->
+        <pre><code>
+        function allEvenString(n: number): string {
+            return "" + n * 2;
+            // concatenating n * 2 onto the empty string "" makes it all one big string
+        }
+
+        let multiplyString: Transform&#60;number, string&#62; = allEvenString;
+        let newStringArray: string[] = negativeNumbers.map(multiplyString);
+        // newStringArray is now the array ["-4", "-2"]
+        </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">Note: Instead of creating the variable multiplyString and using that as the argument in the map method, we could have simply used allEvenString.
+        <p style="margin-left:40px; color:#7BAFD4">Okay. We've seen that map edits the starting array and returns the edited version, which is the same length as the starting array. The Transform function we use when we call the map method goes through and works on each element in the array to 'transform' it. Now that we've gone through this, we can look at the reduce method and what it does.
+
+        
+        <!-- <p style="margin-left:40px">function sumLengths(memo: number, s: string): number {</p>
+        <p style="margin-left:5em">return memo + s.length;</p>
+        <p style="margin-left:40px">}</p>
+        <p style="margin-left:40px">let finalResult: number = newStringArray.reduce(sumLengths, 0);</p>
+        <p style="margin-left:40px">// finalResult is now 4</p> -->
+        <pre><code>
+        function sumLengths(memo: number, s: string): number {
+            return memo + s.length;
+        }
+
+        let finalResult: number = newStringArray.reduce(sumLengths, 0);
+        // finalResult is now 4
+        </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">The reduce method lets you do something to go from an array to a single resulting value. In this example, we used the .length method on the s string. Using this method lets us use the length of a string. For example, the length of the "-4" string is 2 (the string contains - and 4). We pass our Reducer function and a number as arguments into the reduce method we call on our array. The 0 is important because it acts as our initial memo value. The reduce method goes through each element in the array and gets down to one final value. The value returned from applying our Reducer function to the first element in the array then becomes the memo value when we move on to the next element in the array. This continues until we finish going through the array and are left returning one final value.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Chaining</h2>
+        <p style="margin-left:40px; color:#7BAFD4">First, we saw how to filter an array. Then we saw how to map an array, and finally we saw how to reduce an array. Each of these steps took an array and did something with it, but instead of doing it in 3 separate steps, we could have done it all in one with chaining. We can start with our original array and successively call the filter, map, and reduce methods on it. Here's how:</p>
+        <!-- <p style="margin-left:40px">let endResult: number = [-2, -1, 0, 1].filter(test).map(multiplyString).reduce(sumLengths, 0);</p>
+        <p style="margin-left:40px">// endResult would be 4</p> -->
+        <pre><code>
+        let endResult: number = [-2, -1, 0, 1].filter(test).map(multiplyString).reduce(sumLengths, 0);
+        // endResult would be 4
+        </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">We're allowed to do this because of what we know about filter, map, and reduce. Filter returns an array, which is what map takes in! We know that [-2, -1, 0, 1].filter(test) returns the array [-2, -1], which is what we're calling .map(multiplyString) on. We know that this will return ["-4", "-2"] on, which is what .reduce(sumLengths, 0) is called on, and this returns 4. With chaining, all this just happens as one big thing instead of three separate steps.</p>
+
+
+
+        <p style="margin-left:40px; color:#7BAFD4">Now we've seen how to use generics and functional interfaces with the filter, map, and reduce methods that we can call on arrays. Even so, there's so much more we can do with functional interfaces!</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">The Comparator&#60;T&#62; Functional Interface</h2>
+        <!-- <p style="margin-left:40px">interface Comparator&#60;T&#62; {</p>
+        <p style="margin-left:5em">(a: T, b: T): number;</p>
+        <p style="margin-left:40px">}</p> -->
+        <pre><code>
+        interface Comparator&#60;T&#62; {
+            (a: T, b: T): number;
+        }
+        </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">We use functions that fit this interface to sort arrays. We do so by passing these functions as arguments into the sort method, which can be called on an array. The function that we pass in (and that meets the requirements of the Comparator interface) returns a negative number when a comes before b, positive when a comes after b, and zero when a and b are the same. Calling the sort method on an array modifies that array, unlike filter and map which create and return a new array.</p>
+
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Searching</h2>
+        <p style="margin-left:40px">When we want to search through an array, we can do so in two different ways.</p>
+        <h3 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; margin-left:20px">Linear Search</h3>
+        <p style="margin-left:40px">One way we can search is linear search. A function that implements this takes in the array we want to search, the thing we want to find, and a function that fits the Comparator interface. In linear search, we start at one end of the array and go through element-by-element until we find what we're looking for. This takes on average N / 2 steps. It is an O(N) algorithm.</p>
+
+
+        <h3 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; margin-left:20px">Binary Search</h3>
+        <p style="margin-left:40px">Another way we can search is binary search. A function that implements this takes in the same things as the same things as a function implementing linear search, but the way it searches is a little different. In binary search, we start in the middle of the array and checks that element. If it's too big, we look at the smaller half, and if it's too small, we look at the bigger half. With every step we cut the search space in half. This takes about O(log<sub>2</sub>(N)) steps.</p>
+        <p style="margin-left:40px">NOTE: FOR BINARY SEARCH, ELEMENTS MUST BE SORTED.
+
+
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+        <ul>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/functional-interfaces">COMP110 Video for Functional Interfaces</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/filter-map-reduce">COMP110 Video for Filter, Map, Reduce</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/the-comparator-interface">COMP110 Video for the Comparator Interface</a></li>
+            
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/functional-programming">COMP110 Topics Page for Functional Programming</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.typescriptlang.org/docs/handbook/generics.html">Typescript Generics</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.typescriptlang.org/docs/handbook/interfaces.html">Typescript Functional Interfaces</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.bennadel.com/blog/3217-defining-function-and-callback-interfaces-in-typescript.htm">TypeScript Functional Interfaces from Ben Nadel</a></li>
+
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/12-Functional-Programming-Introduction.pdf">COMP110 Lecture Slides on Functional Programming Introduction</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/13-Higher-order-Functions.pdf">COMP110 Lecture Slides on Higher-order Functions - Functions as Parameters</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/14-Sorting-and-Searching.pdf">COMP110 Lecture Slides on Sorting and Searching</a></li>
+
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-6.pdf">COMP110 Review Slides on Filter, Map, Reduce, and Functional Interfaces</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-7.pdf">COMP110 Review Slides on Searches</a></li> 
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-8.pdf">COMP110 Review Slides on Chaining</a></li>    
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/worksheets/WS4-Functional-Interfaces.pdf">COMP110 WS on Functional Interfaces</a></li>  
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Optional-WS8.pdf">COMP110 Optional WS on Functional Interfaces</a></li>  
+            
+
+            <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+            <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+            </ul>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    
+
+    </div>
+    </body>        
+    </html>

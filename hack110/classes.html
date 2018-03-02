@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Classes, Reference Types, OOP and Subtyping, and Optional Parameters</title>
+        <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Bootstrap's Style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+        
+
+
+</head>
+<body>
+
+
+
+
+
+    <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+        <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+          <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          COMP110 Review
+        </a>
+        <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        
+        <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+      </nav>
+
+
+<br>
+        <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Classes, Reference Types, OOP, Subtyping, and Optional Parameters</h1>
+<div style="margin-left:10px; margin-right:10px">
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+        <p style="margin-left:40px">This section's got a lot! We'll start with classes first. Classes are guidelines for objects. When we make a class, we are making a new type that contains things. We can put variables into classes (as the class's properties, or fields). We can also put functions within classes (as methods). Classes are just blueprints for objects. When we instantiate a class, we make an object whose type is that class. When we have classes, we are now using reference types and no longer the simple value types of string, boolean, and number.</p>
+        <p style="margin-left:40px">Classes are a collection of things-properties and methods-so they are more complex than our simple types. Classes are reference types. We'll get to these and the rest of the topics as we go.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Value Types vs. Reference Types</h2>
+        <p style="margin-left:40px">Simple value types are string, number, and boolean. When you make a variable whose type is one of these, the variable holds the actual value you give it. Generally, we can just assign values to variables that are value types.</p>
+        <p style="margin-left:40px">Reference types are stored as references and not the actual values. Generally, when we make a variable that is a reference type, we must construct it instead of just assigning a value. The variable then holds a reference to what we just constructed.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">How to Make a Class</h2>
+        <!-- <p style="margin-left:40px">class ClassName {
+            <p style="margin-left:5em">propertyName: type = value;</p>
+            <p style="margin-left:5em">constructor(param: type) {</p>
+                <p style="margin-left:7em">this.propertyName = param;</p>
+                <p style="margin-left:5em">}</p>
+            <p style="margin-left:5em">methodName(parameter: type): type {
+                <p style="margin-left:7em">// Implementation of the method</p>
+            <p style="margin-left:5em">}</p>
+            <p style="margin-left:40px">}</p>
+            </p>
+        </p> -->
+        <pre><code>
+        class ClassName {
+
+            propertyName: type = value;
+
+            constructor(par: type) {
+                this.propertyName = par;
+            }
+
+            methodName(para: type): type {
+                // implementation of the method
+            }
+
+        }
+        </code></pre>
+        <p style="margin-left:40px">The method is just a function defined within the class. The constructor has no return type. It is important when we want to use the class to make a new object or instance of that class. Here's how:</p>
+        <p style="margin-left:40px">let obj: ClassName = new ClassName(arg);</p>
+        <p style="margin-left:40px">When we do this, we are constructing an object by calling the class's constructor. If the constructor has parameters in the class (it can, but doesn't need to), then when we call it to create a new object, we must pass in arguments for those parameters. Once we do all this, we have created a new object. Since an object isn't just a string, number, or boolean, it is a reference type NOT a value type, which means that what we're really doing is creating a variable that holds a reference to the new object.</p>
+        <p style="margin-left:40px">When we made the class, we chose to put a parameter within the constructor, then assign it to the property. In order to access that property, we had to say this.propertyName so we could get to it and use it. "This" is how we refer to the object we're in. We would also have to use "this" if we're refering to the object within one of its methods. </p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Examples</h2>
+        <!-- <p style="margin-left:40px">class Person {
+            <p style="margin-left:5em">name: string;<br>age: number;</p>
+        </p>
+        <p style="margin-left:40px">
+            <p style="margin-left:5em">constructor(n: string, a: number) {
+                <p style="margin-left:7em">this.name = n;<br>this.age = a;</p>
+                <p style="margin-left:40px"><p style="margin-left:5em">}</p>
+                <p style="margin-left:40px">
+                    <p style="margin-left:5em">hasBirthday(): void {</p>
+                    <p style="margin-left:7em">this.age++;</p>
+                    <p style="margin-left:5em">}</p>
+                </p>
+
+                <p style="margin-left:40px">}</p>
+                </p></p>
+            <p style="margin-left:40px">let madison: Person = new Person("madison", 18);</p>
+            <p style="margin-left:40px">let shay: Person = new Person("shay", 16);</p>
+            <p style="margin-left:40px">let madeleine: Person = madison;</p> -->
+            <pre><code>
+        class Person {
+
+            name: string;
+            age: number;
+
+            constructor(n: string, a: number) {
+                this.name = n;
+                this.age = a;
+            }
+
+            hasBirthday(): void {
+                this.age++;
+            }
+
+        }
+
+        let madison: Person = new Person("madison", 18);
+        let shay: Person = new Person("shay", 16);
+        let madeleine: Person = madison;
+            </code></pre>
+            <p style="margin-left:40px; color:#7BAFD4">We've just created a Person class, a variable for the object madison, a variable for shay, and a variable for madeleine. When we made madeleine, instead of initializing it to a new Person object, we initialized it with madison. Since we make objects with all these variables, they are reference types, which means they hold references instead of the actual objects themselves. Thus, initializing madeleine as madison copies the reference in madison and gives the copy of this reference to madeleine. So, what happens when we start making adjustments to things?</p>
+            <p style="margin-left:40px; color:#7BAFD4">In order to access the properties or method of any of the objects we created, we must go through that object first.</p>
+            <!-- <p style="margin-left:40px">shay.age = 17;
+                <br>madeleine.hasBirthday();
+            </p> -->
+            <pre><code>
+        shay.age = 17;
+        madeleine.hasBirthday();
+            </code></pre>
+            <p style="margin-left:40px; color:#7BAFD4">Since madeleine references the same object as madison, calling the hasBirthday method (which increases the value of the age property by 1) on madeleine changes madison's age as well, since madison and madeleine both refer to one object. This object's age property would now be 19, so madison.age and madeleine.age would now both be 19.</p>
+            <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Usefulness of Classes and OOP</h2>
+            <p style="margin-left:40px">Classes are useful in many ways. They're nice for creating a type that can be instantiated and that groups together specific attributes (properties) and capabilities (methods and constructors). Using these capabilities through object-oriented programming (OOP) helps us do many different things with what we know about classes and objects.</p>
+            <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Subtyping</h2>
+            <p style="margin-left:40px">Classes are great because they let us make our own types for different things. We can make this even better with subtyping. Sometimes we might want to get a little more specific, so we can make classes that extend other classes! For example, we know that all squares are rectangles but not all rectangles are squares. We could have a rectangle class (all rectangles would fit with this) and a square class (only squares fit with this). We'd make a new square object, but squares are also rectangles, so we can translate this idea into our code by making the square class extend the rectangle class. All we'd have to do is start our class definition like normal, then after we say the class name, add the "extends" keyword then the name of the class we're extending from. We also must make sure the subclass meets the standards of the parent class. We'll make use of constructors to do this.</p>
+            <p style="margin-left:40px">One super class can have many subclasses that extend it, but each class is only allowed to extend from one parent class. For example, we could make our Rectangle class extend a Shape super class. We could also make a Circle class that extends the Shape class. Note that our Square class still only extends Rectangle-each class is only allowed to extend one super class, but that super class is allowed to extend a different class. Even though we have Square extends Rectangle, which extends Shape, we don't say that Square extends Shape. </p>
+            <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Example with Subtyping and Optional Parameters</h2>
+            <p style="margin-left:40px">We'll go back to our Person class, but this time we want to make a UNCStudent class that extends our person class. We can be sure this is the order we want (and not Person extends UNCStudent) by checking the is-a relationship: the UNCStudent is a Person, but the Person may or may not be a UNCStudent.</p>
+            <!-- <p style="margin-left:40px">class UNCStudent extends Person {
+                <p style="margin-left:5em">onyen: string = "";</p>
+            </p>
+            <p style="margin-left:40px">
+                <p style="margin-left:5em">constructor (name: string, age: number, onyen?: string) {
+                        <p style="margin-left:7em">super(name, age);</p>
+                    <p style="margin-left:7em">if (onyen !== undefined) {</p>
+                        
+                    <p style="margin-left:9em">this.onyen = onyen;</p>
+                    <p style="margin-left:7em">}</p>
+                    <p style="margin-left:40px"><p style="margin-left:5em">}</p>
+                    
+    
+                    <p style="margin-left:40px">}</p>
+                    </p></p> -->
+            <pre><code>
+        class UNCStudent extends Person {
+            onyen: string = "";
+
+            constructor(name: string, age: number, onyen?: string) {
+                super(name, age);
+                if (onyen !== undefined) {
+                    this.onyen = onyen;
+                }
+            }
+        }
+            </code></pre>
+            <p style="margin-left:40px; color:#7BAFD4">So what did we just do? In our constructor, we took in name, age, and onyen, even though the only property explicitly defined in UNCStudent was onyen. We needed name and age because UNCStudent (since it extends Person) still has everything Person has, it just also has some other stuff. So, we must take care of everything we'd normally do for Person in addition to the stuff we want to do for UNCStudent. Within the constructor, the first thing we must do is call the super. This takes care of the stuff from Person-it goes back and fills in what it needs to for Person, in this case the name and age. We pass the name and age from our constructor into the call to the super as arguments. If Person's constructor had no parameters, we'd simply call super();. Then, after we take care of the Person and super stuff, we can move into finishing up what we need to do for UNCStudent, which we do like normal by saying this.onyen = onyen;.</p>
+            <p style="margin-left:40px; color:#7BAFD4">When we put onyen in our constructor, we added the ?. This made the onyen parameter optional. An important thing about optional parameters is that they must be declared after all required parameters. The other important thing about optional parameters is that once we make something optional, its type changes to its origional type OR undefined. Thus, when we try to use the values of the optional parameter later, we have to check to make sure it's not undefined first (done in the if statement that checks onyen !== undefined).</p>
+            <p style="margin-left:40px; color:#7BAFD4">Since UNCStudent extends Person, it also has the capabilities (methods) of Person. This means we can use any methods defined in the super (parent) class on objects of the subclass since the subclass extends the parent class. Let's try it!</p>
+            <!-- <p style="margin-left:60px">let hailey: UNCStudent = new UNCStudent("hailey", 22, "haileyh");</p>
+            <p style="margin-left:60px">hailey.hasBirthday();</p> -->
+            <pre><code>
+        let hailey: UNCStudent = new UNCStudent("hailey", 22, "haileyh");
+        hailey.hasBirthday();
+            </code></pre>
+            <p style="margin-left:40px">First, we created a new UNCStudent object, making sure we gave it a name, age, and onyen to meet all the requirements of the UNCStudent and Person classes. Then, we called the hasBirthday method on the hailey object. Since onyen was an optional parameter, we could've left "haileyh" out when we made the new UNCStudent.</p>
+
+
+            <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+            <ul>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/classes">COMP110 Video for Classes</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/reference-types-vs-value-types">COMP110 Video for Reference Types vs Value Types</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/object-oriented-programming">COMP110 Topics Page on Object-Oriented-Programming (includes more on constructors and methods)</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/classes-and-objects">COMP110 Topics Page on Classes and Objects</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/06-Types-Classes-and-Objects.pdf">COMP110 Lecture Slides on Classes and Objects</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/09-Values-References-Exporting-Importing.pdf">COMP110 Lecture Slides on Values and References</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/17-Object-Oriented-Programming.pdf">COMP110 Lecture Slides on Object-Oriented Programming</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/18-Default-Parameters-and-Shapes.pdf">COMP110 Lecture Slides on Default Parameters</a></li>
+                    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/20-OOP-Subtyping.pdf">COMP110 Lecture Slides on OOP Subtyping</a></li>
+                    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-2.pdf">COMP110 Review Slides on Classes</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-3.pdf">COMP110 Review Slides on Classes and Objects</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-6.pdf">COMP110 Review Slides on Values vs References</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-7.pdf">COMP110 Review Slides on Reference, Value, and OOP: Constructors and Methods</a></li>   
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-8.pdf">COMP110 Review Slides on OOP, Value types vs Reference Types, Classes and Objects, Methods, This, Constructors, and Optional Parameters</a></li>    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-9.pdf">COMP110 Review Slides on Subtypes and Optional Parameters</a></li>     
+                    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/WS2.pdf">COMP110 WS on Classes</a></li> 
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/WS3-1.pdf">Another COMP110 WS on Classes</a></li>    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/COMP110-%E2%80%93-WS5.pdf">COMP110 WS on OOP, Constructors, and Methods</a></li>  
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/110-2016-spring/WS6.pdf">COMP110 WS on OOP</a></li>  
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/study-guides/Study-Guide-3.pdf">COMP110 Optional WS on Classes and Objects</a></li>  
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-WS4.pdf">COMP110 Optional WS on Classes</a></li>                    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-01-spring/Review-Session-WS6.pdf">COMP110 Optional WS on Classes, Methods, Value vs Reference Types, and Constructors</a></li>  
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Optional-WS8.pdf">COMP110 Optional WS on Classes that Extend Another Class</a></li>                    
+                    
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.tutorialspoint.com/typescript/typescript_classes.htm">Typescript Classes on tutorialspoint</a></li>  
+                    <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+                    <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+            </ul>
+        
+
+        </div>
+
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        
+
+
+
+</body>
+</html>

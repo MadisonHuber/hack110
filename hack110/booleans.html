@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Booleans</title>
+        
+        <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- Bootstrap's Style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+        
+
+
+</head>
+<body>
+
+
+    <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+        <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+          <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          COMP110 Review
+        </a>
+        <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        
+        <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+      </nav>
+
+
+<br>
+        <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Boolean Expressions</h1>
+        <div style="margin-left:10px; margin-right:10px">
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+        <p style="margin-left:40px">We already know booleans are just true or false. The fun part is that we can have expressions that evaluate to true or false and are thereby booleans.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+        <p style="margin-left:40px">As long as it evaluates to true or false anything can be a boolean. We can do this by using any of the relational operators to make comparisons:</p>
+        <ul style="margin-left:40px">
+            <li>>
+                <ul>
+                    <li>Greater than</li>
+                </ul>
+            </li>
+            <li>>=
+                    <ul>
+                        <li>Greater than or equal to / at least</li>
+                    </ul>
+            </li>
+            <li><
+                    <ul>
+                        <li>Less than</li>
+                    </ul>
+            </li>
+            <li><=
+                    <ul>
+                        <li>Less than or equal to / at most</li>
+                    </ul>
+            </li>
+            <li>===
+                    <ul>
+                        <li>Equal to</li>
+                    </ul>
+            </li>
+            <li>!==
+                    <ul>
+                        <li>Not equal to</li>
+                    </ul>
+            </li>
+        </ul>
+      
+        <p style="margin-left:40px">Relational operators are used to make conditional statements that will evaluate to true or false.</p>
+
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Examples</h2>
+        <!-- <p style="margin-left:40px">let test: boolean = 7 > 5; // evaluates to true;
+            <br>
+            let num: number = 4;
+            <br>
+            let newTest: boolean = num <= 5; // evaluates to true;
+        </p> -->
+        <pre><code>
+            let test: boolean = 7 > 5; // evaluates to true
+            let num: number = 4;
+            let newTest: boolean = num <= 5; // evaluates to true
+        </code></pre>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Logical Operators and Negation</h2>
+        <p style="margin-left:40px">We can make even more complex booleans by using logical operators and negation:</p>
+        <ul style="margin-left:60px">
+            <li>&&
+                <ul>
+                    <li>
+                        and
+                    </li>
+                    <li>
+                        if b1 and b2 are variables that are of type boolean, we can use the and operator by saying: b1 && b2
+                    </li>
+                    <li>
+                        evaluates to true only if each thing being compared (b1 and b2) evaluates to true
+                    </li>
+                </ul>
+            </li>
+            <li>||
+                    <ul>
+                        <li>
+                            or
+                        </li>
+                        <li>
+                            if b1 and b2 are variables that are of type boolean, we can use the or operator by saying: b1 || b2
+                        </li>
+                        <li>
+                            evaluates to true if one or both of the things being compared (b1 and b2) evaluate to true
+                        </li>
+                    </ul>
+                </li>
+                <li>!
+                        <ul>
+                            <li>
+                                negation / not operator
+                            </li>
+                            <li>
+                                ! is used to take the flipped meaning of something. It can be used on any statement to flip its meaning.
+                            </li>
+                            <li>
+                                For some boolean that normally evaluates to true, adding the negation operator now gives us false
+                            </li>
+                            <li>
+                                let newBoolean: boolean = 4 < 6; // evaluates to true
+                                <br>
+                                let tester: boolean = !newBoolean; // evaluates to false
+                            </li>
+                            <li>!(3 > 9) evaluates to true</li>
+                        </ul>
+                    </li>
+        </ul>
+        <p style="margin-left:40px">These are often used to create conditional statements.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Conditional Statements, if, if-else, else-if</h2>
+        <p style="margin-left:40px">We can use our knowledge of booleans and the relational, logical, and negation operators to create conditional statements. These often take the form:</p>
+        <ul style="margin-left:40px">
+            <li><pre><code>if (condition) {
+    // do something
+}</code></pre>
+                <!-- if (condition) {
+                    <br>
+                    <p style="margin-left:2em">// do something</p>
+                    
+                } -->
+                <!-- <pre><code>
+                    if (condition) {
+                        // do something
+                    }
+                </code></pre> -->
+            </li>
+            <br>
+            <li><pre><code>if (condition) {
+    // do something
+} else {
+    // do something different
+}</code></pre>
+                    <!-- if (condition) {
+                        <br>
+                        <p style="margin-left:2em">// do something</p>
+                        
+                    } else {
+                        <br>
+                        <p style="margin-left:2em">// do something different</p>
+                    } -->
+            </li>
+            <br>
+            <li><pre><code>if (condition) {
+    // do something
+} else if (different condition) {
+    // do something different
+} else {
+    // do some other thing
+}</code></pre>
+                    <!-- if (condition) {
+                        <br>
+                        <p style="margin-left:2em">// do something</p>
+                        
+                    } else if (different condition) {
+                        <br>
+                        <p style="margin-left:2em">// do something different</p>
+                    } else {
+                        <br>
+                        <p style="margin-left:2em">// do some other thing</p>
+                    } -->
+            </li>
+            
+        </ul>
+        <p style="margin-left:40px">If we make an if statement, we can add on as many else-ifs as we want. There are also many ways we can nest these. For example, we could put an if-else block as the "do something" part of an outer if block.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Note on Using Return with Conditionals</h2>
+        <p style="margin-left:40px">Within our if, if-else, or else-if blocks, we can do a lot of different things. One thing we can do if we are within a function is return. We can put a return statement in each block, but only one will be executed, and once one is executed, the execution of the function stops.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+        <ul>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/arguments-parameters-and-if-then-else-statements">COMP110 Video for If-Then-Else Statements</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/boolean-expressions">COMP110 Video for Boolean Expressions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.tutorialspoint.com/typescript/typescript_operators.htm">TypeScript Operators on tutorialspoint</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/if-then-logic">COMP110 Topics Page on If-Then Logic</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/03-Booleans-and-If-Then-Else-Conditionals.pdf">COMP110 Lecture Slides on boolean and if-then-else statements</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/05-logical-operators-and-the-else-if-pattern.pdf">COMP110 Lecture Slides on Logical Operators and the Else-If Pattern</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-1.pdf">COMP110 Review Slides on Conditionals</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-2.pdf">COMP110 Review Slides on Logic and Nested If-Then</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/worksheets/WS1-VoidFunctionsIfThenElse.pdf">COMP110 WS on if-then-else statements</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-WS2.pdf">COMP110 Optional WS on else-if</a></li>   
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/study-guides/Study-Guide-3.pdf">COMP110 Optional WS on Boolean Operators and if-then-else</a></li>                                
+                <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+        </ul>
+    
+        
+    </div>
+    
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    
+
+
+        
+</body>
+</html>

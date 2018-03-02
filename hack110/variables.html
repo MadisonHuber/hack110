@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Variables and Value Types</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap's Style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+    
+    
+</head>
+<body>
+
+
+
+    <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+        <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+          <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          COMP110 Review
+        </a>
+        <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        
+        <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+      </nav>
+
+
+<br>
+    <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Variables and Value Types</h1>
+<div style="margin-left:10px; margin-right:10px">
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+    <p style="margin-left:40px">Variables are like tupperware containers-they are used to hold things so you can come back for them and use them later.</p>
+    <p style="margin-left:40px">Types help us know more about our variables so we know what we're doing. When something is given a type, it is put into that category, which is useful becasue different things can be done with different types.</p>
+
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+    <p style="margin-left:40px">
+        Variables can hold different things which fall into different categories:
+        <ul style="margin-left:60px">
+            <li>number</li>
+                <ul>
+                    <li>
+                        Numeric values
+                    </li>
+                    <li>
+                        Examples: 0, 1, 4535, -34, 0.45
+                    </li>
+                </ul>
+            <li>string</li>
+            <ul>
+                <li>
+                    Words, or individual characters strung together
+                </li>
+                <li>
+                    Examples: "the", "75", ":)"
+                </li>
+                <li>
+                    strings are enclosed in "", and anything enclosed in "" is generally considered a string
+                </li>
+            </ul>
+            <li>boolean</li>
+                <ul>
+                    <li>
+                        Values that are either true or false
+                    </li>
+                    <li>
+                        Examples: true, false
+                    </li>
+                </ul>
+        </ul>
+    </p>
+    <p style="margin-left:40px">
+        These categories are value types. The value your variable holds fits into one of these categories. 
+    </p>
+    <p style="margin-left:40px; color:#7BAFD4">
+        Great! Now back to tupperware and food...
+        <br>
+        So, variables are like tupperware. If I'm really hungry and order a pizza, chances are I'm going to eat 7 out of the 8 slices. I have an extra piece, but there's no way I'm throwing it away! I'll store it in my tupperware, and next time I want to do something with that piece, such as eat it or reheat it, I'll grab my tupperware to get my pizza!
+        <br>
+        What if I only end up eating 6 pieces? I could get a separate container for each slice, but maybe it'd be nice to keep them together so they don't get lonely in my fridge. I can easily just put them both in one tupperware.
+    </p>
+    <p style="margin-left:40px">
+        Guess what? Variables can hold more than one value, but things get a little more complicated with this. Now, the variable isn't just storing one value, just as the tupperware isn't just storing one piece of pizza. When a variable holds anything other than one simple value (one string, one number, or one boolean), it becomes a reference type!
+    </p>
+    <p style="margin-left:40px; color:#7BAFD4">
+        Okay, but what if I don't feel like pizza and instead get cake? I love pizza and I love cake, but I generally don't like mixing my pizza and cake together. If I wanted to store leftover cake, I probably won't put it together with my pizza all in one tupperware.
+    </p>
+    <p style="margin-left:40px">
+        Similarly, we generally want whatever is held by our variable to all be the same type.
+    </p>
+
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Making and Using Variables</h2>
+    <p style="margin-left:40px">There are different ways to make a variable, but we generally follow this format:</p>
+        <!-- <p style="margin-left:60px">let variableName: type;
+            <br>
+            variableName = value;
+        </p> -->
+        <pre><code>
+            let variableName: type;
+            variableName = value;
+    </code></pre>
+        <p style="margin-left:40px">In the first line, we create a new variable, and in the second line we give it a value. This can be done in one line:</p>
+        <!-- <p style="margin-left:60px">let variableName: type = value;</p> -->
+        <pre><code>
+            let variableName: type = value;
+            </code></pre>
+        <p style="margin-left:40px">Example:</p>
+        <!-- <p style="margin-left:60px">let name: string = "Bob";</p> -->
+        <pre><code>
+            let name: string = "Kris";</code></pre>
+        <p style="margin-left:40px">We generally use 'let' when we create a variable, but there are other ways to do so. For example, 'const' creates a constant variable whose value cannot be changed. Variables created with 'let' can be reassigned to new values, as done below with the name variable we just created. When we want to access or reassign the variable's value, all we have to do now is use the name of our variable.</p>
+        <!-- <p style="margin-left:60px">name = "Joe";</p> -->
+        <pre><code>
+            name = "Jeffrey";</code></pre>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+        <ul>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/variable-basics">COMP110 Video for Variable Basics</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/simple-data-types">COMP110 Topics Page for Simple Data Types</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/variables">COMP110 Topics Page for Variables</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.typescriptlang.org/docs/handbook/basic-types.html">TypeScript Types</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.typescriptlang.org/docs/handbook/variable-declarations.html">TypeScript Variables</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/01-Types-and-Variables.pdf">COMP110 Lecture Slides on Types and Variables</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-0.pdf">COMP110 Review Slides with Types and Variables</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-7.pdf">Review Slides on Constants</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/worksheets/COMP110-%E2%80%93-WS0.pdf">COMP110 WS about Variables</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/study-guides/Study-Guide-1.pdf">COMP110 Optional WS with Variables</a></li>
+        <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+        </ul>
+        
+    
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+</div>
+
+</body>
+</html>

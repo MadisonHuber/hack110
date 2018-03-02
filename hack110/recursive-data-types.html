@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Recursive Data Types and Null</title>
+        <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap's Style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+        
+</head>
+<body>
+
+
+    <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+        <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+          <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          COMP110 Review
+        </a>
+        <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        
+        <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+      </nav>
+
+
+<br>
+        <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Recursive Data Types and Null</h1>
+<div style="margin-left:10px; margin-right:10px">
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+        <p style="margin-left:40px">We get what's going on with types, both value and reference. We know about recursion. Now, we can take what we know about these ideas and put it all together to get recursive data types.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+        <p style="margin-left:40px">To review what we know about classes, they can have properties and methods. The properties have their own types, which can be either value types or reference types. Great! Now to review recursion-this is when a function calls itself. So, recursive data types are types that refer to themselves. This happens when a class has a property that refers to other objects of the same type. This is commonly used to construct linked lists.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Linked Lists and Null</h2>
+        <p style="margin-left:40px">AHHHHHHH! LINKED LISTS! The idea of a linked list can seem kind of scary, but it's nothing we can't handle. We can think of a linked list as a string of chained-together Node objects from the Node class:</p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">class Node {</p>
+            <p style="margin-left:5em; color:#7BAFD4">data: string;</p>
+            <p style="margin-left:5em; color:#7BAFD4">next: Node | null = null;</p>
+            <p style="margin-left:5em; color:#7BAFD4">constructor(data: string, next?: Node) {</p>
+                <p style="margin-left:7em; color:#7BAFD4">this.data = data;</p>
+                <p style="margin-left:7em; color:#7BAFD4">if (next !== undefined) {</p>
+                    <p style="margin-left:9em; color:#7BAFD4">this.next = next;</p>
+                    <p style="margin-left:7em; color:#7BAFD4">}</p>
+                <p style="margin-left:5em; color:#7BAFD4">}</p>
+        <p style="margin-left:40px; color:#7BAFD4">}</p> -->
+        <pre><code>
+        class Node {
+            data: string;
+            next: Node | null = null;
+
+            constructor(data: string, next?: Node) {
+                this.data = data;
+                if (next !== undefined) {
+                    this.next = next;
+                }
+            }
+
+        }
+        </code></pre>
+        <p style="margin-left:40px">What's the deal with this "| null" thing? If we would ignore this and make our linked list a chain of Node objects, where would it end if the next property is always another Node? That's where the "| null" comes in. With this class, the next property's type is Node | null. This just means its type is "Node or null." So, the "|" lets us make a type something OR something else. In this case, we've made it Node OR null. So, what is null? Null is nothing. It's the absence of something. So, if the next property is null, there's nothing next and we've reached the end of our list. Since we now have the possibility of the next property being null, and since we know null is nothing, whenever we want to use the next property, we've first got to check and make sure it's not null.</p>
+        <p style="margin-left:40px">So what else do we need to know about linked lists? We know a linked list is just a chain of Node objects. The first is generally referred to as the head. Additionally, unlike arrays, linked lists are not indexed. This means that to get to a specific Node, we must start at the beginning and go through each successive Node one by one until we reach the one we want. We can't just skip to the place we want, but rather we must use the next property to pass through each preceding Node. We can think about this in terms of IKEA!
+            <p style="text-align:center"><img src="http://cdn.permanenthunger.com/wp-content/uploads/2012/11/IKEA-market-hall.jpg" width="300" height="300" alt="layout"></p>
+        <p style="margin-left:40px">Everyone loves IKEA. In order to make it through, you've got to follow the path they designate with the white arrows. You can't just enter and go straight to the section you want. First, you've got to go through everything else along the trail before you get to what you want. We can demonstrate this with a linked list!</p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">let tail: Node = new Node("Wall decoration");</p>
+        <p style="margin-left:40px; color:#7BAFD4">let homeDec: Node = new Node("Home decoration", tail);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let lighting: Node = new Node("Lighting", homeDec);
+        <p style="margin-left:40px; color:#7BAFD4">let homeOrganization: Node = new Node("Home Organization", lighting);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let bathrooms: Node = new Node("Bathrooms", homeOrganization);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let rugsFloor: Node = new Node("Rugs &#38; Flooring", bathrooms);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let bedroomTextiles: Node = new Node("Bedroom textiles", rugsFloor);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let homeTextiles: Node = new Node("Home textiles", bedroomTextiles);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let cookshopTableware: Node = new Node("Cookshop &#38; Tableware", homeTextiles);</p>
+        <p style="margin-left:40px; color:#7BAFD4">let head: Node = new Node("entrance", cookshopTableware);</p> -->
+        <pre><code>
+        let tail: Node = new Node("Wall decoration");
+        let homeDec: Node = new Node("Home decoration", tail);
+        let lighting: Node = new Node("Lighting", homeDec);
+        let homeOrganization: Node = new Node("Home Organization", lighting);
+        let bathrooms: Node = new Node("Bathrooms", homeOrganization);
+        let rugsFloor: Node = new Node("Rugs &#38; Flooring", bathrooms);
+        let bedroomTextiles: Node = new Node("Bedroom textiles", rugsFloor);
+        let homeTextiles: Node = new Node("Home textiles", bedroomTextiles);
+        let cookshopTableware: Node = new Node("Cookshop &#38; Tableware", homeTextiles);
+        let head: Node = new Node("entrance", cookshopTableware);
+        </code></pre>
+        <p style="margin-left:40px">Okay, here's what this looks like:</p>
+        <p style="margin-left:40px">head &#8594; cookshopTableware &#8594; homeTextiles &#8594; bedroomTextiles &#8594; rugsFloor &#8594; bathrooms &#8594; homeOrganization &#8594; lighting &#8594; homeDec &#8594; tail &#8594; null</p>
+        <p style="margin-left:40px">Now that we've got a nice IKEA linked list that matches the map, we can do a bunch of things with it. We'll start by finding its length, both imperatively and recursively. First, how to do it imperatively:</p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">function lengthLoop(node: Node): number {</p>
+            <p style="margin-left:5em; color:#7BAFD4">let count: number = 1;</p>
+            <p style="margin-left:5em; color:#7BAFD4">let current: Node = node;</p>
+            <p style="margin-left:5em; color:#7BAFD4">while (current.next !== null) {</p>
+            <p style="margin-left:7em; color:#7BAFD4">current = current.next;</p>
+            <p style="margin-left:7em; color:#7BAFD4">count++;</p>
+            <p style="margin-left:5em; color:#7BAFD4">}</p>
+            <p style="margin-left:5em; color:#7BAFD4">return count;</p>
+            <p style="margin-left:40px; color:#7BAFD4">}</p> -->
+            <pre><code>
+            function lengthLoop(node: Node): number {
+                let count: number = 1;
+                let current: Node = node;
+                while (current.next !== null) {
+                    current = current.next;
+                    count++;
+                }
+                return count;
+            }
+            </code></pre>
+            <p style="margin-left:40px">Great! Now recursively:</p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">function length(head: Node): number {</p>
+            <p style="margin-left:5em; color:#7BAFD4">if (head.next === null) {</p>
+            <p style="margin-left:7em; color:#7BAFD4">return 1;</p>
+            <p style="margin-left:5em; color:#7BAFD4">} else {</p>
+            <p style="margin-left:7em; color:#7BAFD4">return 1 + length(head.next);</p>
+            <p style="margin-left:5em; color:#7BAFD4">}</p>
+        <p style="margin-left:40px; color:#7BAFD4">}</p> -->
+        <pre><code>
+        function length(head: Node): number {
+            if (head.next === null) {
+                return 1;
+            } else {
+                return 1 + length(head.next);
+            }
+        }
+        </code></pre>
+        <p style="margin-left:40px">These examples help us think through how to do something to a linked list either imperatively or recursively. Aside from finding the length, there's a lot we can do with linked lists, but we won't get into it all here. One thing we will look at, however, is what to do if we want to change our list. Let's do this by examining the shortcuts in our IKEA map. If for some weird reason we'd want to get out of IKEA as fast as possible, we'd want to take the shortcuts. We can edit our linked list so our new path follows the original, but takes the shortcuts instead of just the marked route. As a reminder, here's what we have now:</p>
+        <p style="margin-left:40px">head &#8594; cookshopTableware &#8594; homeTextiles &#8594; bedroomTextiles &#8594; rugsFloor &#8594; bathrooms &#8594; homeOrganization &#8594; lighting &#8594; homeDec &#8594; tail &#8594; null</p>
+        <p style="margin-left:40px">Here's what we want:</p>
+        <p style="margin-left:40px">head &#8594; cookshopTableware &#8594; homeTextiles &#8594; bedroomTextiles &#8594; homeOrganization &#8594; homeDec &#8594; tail &#8594; null</p>
+        <p style="margin-left:40px">To adjust our linked list to reflect the shortcuts in our map, we've got to change the .next properties on some of our Nodes:</p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">bedroomTextiles.next = homeOrganization;</p>
+        <p style="margin-left:40px; color:#7BAFD4">homeOrganization.next = homeDec;</p> -->
+        <pre><code>
+        bedroomTextiles.next = homeOrganization;
+        homeOrganization.next = homeDec;
+        </code></pre>
+        <p style="margin-left:40px">Great! Since we must pass through each Node, and we can't skip any, changing the next property now changes our route so we have to go through the shortcuts like we wanted!</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Takeaways</h2>
+        <p style="margin-left:40px">Linked lists aren't that bad. A linked list is just a chain of Nodes, which we now know to be recursive data types. The big thing about linked lists is that there's a lot we can do to (or with) them. With all these possibilities with linked lists, it's all up to us and what we want to do. One of the most challenging things about linked lists, then, is figuring out how to do what we want. It's just one of those things that takes a little getting used to. We know linked lists aren't indexed. We know we have to go through each Node one at a time. We know loops. We know recursion. Usually, we know our goal and what we want to do. It just takes some time and a lot of thinking to put it all together and make it work.
+
+
+                <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+                <ul>
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/linked-lists">COMP110 Video for Linked Lists</a></li>
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/16-Recursive-Data-Types-null-and-Linked-Lists.pdf">COMP110 Lecture Slides on Recursive Data Types and null</a></li>
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-7.pdf">COMP110 Review Slides on Linked Lists and null</a></li>
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-8.pdf">COMP110 Review Slides on null</a></li>
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/110-2016-spring/WS6.pdf">COMP110 WS on Linked Lists</a></li>
+                        
+                        
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=RihfCD6GiqI">COMP110 Video on Finding the Last Node of a Linked List (Imperative)</a></li> 
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=TKeNLnLDsb4">Another COMP110 Video on Finding the Last Node of a Linked List (Recursive)</a></li>    
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=A4d-KXHairg">COMP110 Video on Removing a Node from a Linked List Imperatively</a></li>  
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=9v3a1ySOvow">COMP110 Video on Removing a Node from a Linked List Recursively</a></li>  
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=4H9IKBlY1TM">COMP110 Video for Determining if Two Linked Lists are Equal to One Another Recursively</a></li>  
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=ZieznF4ZePQ">COMP110 Video for Splicing One Linked List into Another Linked List Recursively</a></li>                    
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.youtube.com/watch?v=KiAM_vNpg0M">COMP110 Video for Swapping an Element in a Linked List Backward (Using Recursion)</a></li>  
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://visualgo.net/en/list">Resource for Visualizing Linked Lists from visualgo.net</a></li>  
+                        <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+                        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+                </ul>
+
+
+
+            </div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Functions</title>
+        <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Bootstrap's Style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+        <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+        
+
+
+
+    </head>
+<body>
+
+
+
+
+
+
+
+
+
+    <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+        <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+          <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+          COMP110 Review
+        </a>
+        <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+        
+        <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+      </nav>
+
+
+
+
+
+<br>
+        <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Functions</h1>
+<div style="margin-left:10px; margin-right:10px">
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+        <p style="margin-left:40px">Functions allow you to actually do things. When you implement a function, you're writing out what you want it to do. In order to make that actually happen, you have to call the function. Functions take stuff in, do things to it, and spit stuff out.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+        <p style="margin-left:40px">Depending on what you want to do, you can make functions that will take something in and manipulate it, or take nothing in and do stuff anyway. When you want your function to take something in, you specify what type of data you want to pass in through parameters when you write out the implementation. Then, when you call the function, you use your specific data as arguments. This is clearer when we know how to create and use functions.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Making Functions</h2>
+        <p style="margin-left:40px">Here's how we make functions:</p>
+        <!-- <p style="margin-left:60px">function funcName(x: type, y: type): type {
+            <br>
+            <t style="margin-left:5em">// implementation</t>    
+            <br>
+        }
+        </p> -->
+        <pre><code>
+            function funcName(x: type, y: type): type {
+                // implementation
+            }
+        </code></pre>
+        <p style="margin-left:40px">Here, x and y are parameters, and you must give them types just as you would a variable. The last type before the { is the return type of the function. Functions, after doing whatever you say, return things. Just as with everything else, you must specify the type of the thing you are returning.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Return Types of Functions</h2>
+        <p style="margin-left:40px">Functions can return pretty much whatever you want, and we already know we have to specify the type of whatever is returned. Possible types include:</p>
+        <ul style="margin-left:40px">
+            <li>number</li>
+            <li>string</li>
+            <li>boolean</li>
+            <li>void
+                <ul>
+                    <li>void is the type you give when you don't want your function to return anything. Functions that don't return anything still do things, they just don't give you anything back at the end.</li>
+                </ul>
+            </li>
+        </ul>
+        <p style="margin-left:40px">These aren't the only types functions can return. If something exists as a type, it can be a return type of a function.</p>
+            
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Example Function</h2>
+        <!-- <p style="margin-left:40px">function add(x: number, y: number): number {
+            <br>
+            <t style="margin-left:5em">let z: number = x + y;</t>
+            <br>
+            <t style="margin-left:5em">return z;</t>
+            <br>
+            }
+        </p> -->
+        <pre><code>
+            function add(x: number, y: number): number {
+                let z: number = x + y;
+                return z;
+            }
+            </code></pre>
+        <p style="margin-left:40px">This function takes in two numbers, x and y, adds them, and returns the sum, z.</p>
+        <p style="margin-left:40px">If this were a void function, then what? Void functions don't return anything, so we could either leave out the return statement or simply say return;.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Functions and Return</h2>
+        <p style="margin-left:40px">Functions can only return once. After a return statement is encountered and executed, the function ends. Functions can have multiple return statements within them, but every function still only returns once-a function will never execute multiple return statements.</p>
+        <p style="margin-left:40px">What we put in the return statement must match the function's return type.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Calling Functions</h2>
+        <p style="margin-left:40px">So far, we've defined functions. Now we want to use them, so we must call them. Here's how:</p>
+        <!-- <p style="margin-left:60px">funcName(arguments);</p> -->
+        <pre><code>
+            funcName(arguments);</code></pre>
+            <br>
+        <p style="margin-left:40px">All we do is write the function's name and then in the parentheses we put in our arguments, which are just our specific values for the parameters.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Calling the Example Function</h2>
+        <!-- <p style="margin-left:40px">add(4, 3);</p> -->
+        <pre><code>
+            add(4, 3);
+        </code></pre>
+        
+        <p style="margin-left:40px">Here, we pass in argument 4 for parameter x and argument 3 for parameter y. This is fine since the number of arguments (2) matches the number of parameters (2). It is also necessary that the first argument has the same type (in this case, number) as the first parameter (number), and the second argument has the same type as the second parameter.</p>
+        <p style="margin-left:40px">So what happens? The function returns 7, since z became 4 + 3, which evaluates to 7, and the function returns z. Return is NOT the same as print, so unless we print the output by saying print(add(4, 3));, nothing is printed. If we would write this print statement, 7 would print since the function executes and returns z, which is 7, to the place it was called, which was inside the print statement.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Note on Variables and Functions</h2>
+        <p style="margin-left:40px">Variable usage is limited to inside the variable's scope. A variable's scope is the space within the curly braces {} that enclose the variable. Outside this scope, variables are not accessible. So, when we declare variables within functions, they can only be used within that function, and we can't get to them anywhere else.</p>
+        
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Anonymous Functions</h2>
+        <p style="margin-left:40px">Anonymous functions may sound a little mysterious, but don't worry! Anonymous functions are really just functions that are anonymous-they have no name! Other than that, they're not much different from normal functions. Anywhere we can refer to a normal function by its name we can also use an anonymous function. This is useful with variables that are assigned functions and when passing functions in as arguments to other functions or methods. Here's how we make one:</p>
+        <!-- <p style="margin-left:40px">function(parameter: type): type {</p>
+            <p style="margin-left:5em">// implementation</p>
+            <p style="margin-left:40px">}</p> -->
+            <pre><code>
+                function(parameter: type): type {
+                    // implementation
+                }
+            </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">Now we'll look at how to assign an anonymous function to a variable. Even though our function will end with a closing curly brace }, we'll still need to end with a semicolon ; since the function is part of a variable assignment statement:</p>
+        <!-- <p style="margin-left:40px">let aNewVariable: type = function(parameter: type): type {</p>
+            <p style="margin-left:5em">// implementation</p>
+            <p style="margin-left:40px">};</p> -->
+            <pre><code>
+                let aNewVariable: type = function(parameter: type): type {
+                    // implementation
+                };
+            </code></pre>
+        <p style="margin-left:40px; color:#7BAFD4">Now we'll get into how to use an anonymous function as an argument of another function or method. We can't forget to put in the closing curly brace of the function }. We also can't forget to close our parentheses of the function or method into which we are passing our anonymous function as an argument. We also can't forget to end with a semicolon ; again! Let's see this in action:</p>
+        <!-- <p style="margin-left:40px">[-2, -1, 0, 1].map(function(n: number): number {</p>
+            <p style="margin-left:5em">return n * 2;</p>
+            <p style="margin-left:40px">});</p> -->
+            <pre><code>
+                [-2, -1, 0, 1].map(function(n: number): number {
+                    return n * 2;
+                });
+            </code></pre>
+        <p style="margin-left:40px">Anonymous functions are closures, which means they can use variables declared outside of its block even if those variables aren't in block scope. Overall, anonymous functions aren't really that different from normal functions, but they have a few cool attributes like this that can sometimes make them fun and helpful to use.</p>
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Functions that Call Themselves</h2>
+        <p style="margin-left:40px">With functions, we can do so many fun things, such as RECURSION! YAY! When a function calls itself as part of its implementation, this is recursion. Any time we call a function, a new frame is added on the memory stack for its local variables. The local variables in a frame are independent of local variables in other frames. An important thing to remember when we're doing recursion is that we need a base case to tell the function to stop calling itself at some point, or else it will call itself forever. This would cause infinite frames to be added to the memory stack, resulting in a stack overflow error! We definitely don't want that, so we always make sure that on some conditions, the function will call itself, but for at least one condition that will at some point be true, it won't call itself anymore. Here's an example of recursion:
+            </p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">function eatChristmasCookies(stillHungry: boolean, numCookiesEaten: number): number {</p>
+            <p style="margin-left:5em; color:#7BAFD4">if (!stillHungry) {</p>
+                <p style="margin-left:7em; color:#7BAFD4">return numCookiesEaten;</p>
+                <p style="margin-left:7em; color:#7BAFD4">// this is our base case! Here, we're not calling our function, but just returning numCookiesEaten.</p>
+            <p style="margin-left:5em; color:#7BAFD4">} else if (numCookiesEaten >= 10) {</p>
+                <p style="margin-left:7em; color:#7BAFD4">stillHungry = false;</p>
+                <p style="margin-left:7em; color:#7BAFD4">return numCookiesEaten + eatChristmasCookies(stillHungry, numCookiesEaten);</p>
+            <p style="margin-left:5em; color:#7BAFD4">} else {</p>
+                <p style="margin-left:7em; color:#7BAFD4">numCookiesEaten += 5;</p>
+                <p style="margin-left:7em; color:#7BAFD4">return numCookiesEaten + eatChristmasCookies(stillHungry, numCookiesEaten);</p>
+            <p style="margin-left:5em; color:#7BAFD4">}</p>
+        <p style="margin-left:40px; color:#7BAFD4">}</p>
+        <p style="margin-left:40px; color:#7BAFD4">print("We've eaten " + eatChristmasCookies(true, 0) + " Christmas cookies! Yum!");</p> -->
+        <pre><code>
+            function eatChristmasCookies(stillHungry: boolean, numCookiesEaten: number): number {
+                if (!stillHungry) {
+                    return numCookiesEaten;
+                    // this is our base case! Here, we're not calling our function, but just returning numCookiesEaten.
+                } else if (numCookiesEaten >= 10) {
+                    stillHungry = false;
+                    return numCookiesEaten + eatChristmasCookies(stillHungry, numCookiesEaten);
+                } else {
+                    numCookiesEaten += 5;
+                    return numCookiesEaten + eatChristmasCookies(stillHungry, numCookiesEaten);
+                }
+            }
+
+            print("We've eaten " + eatChristmasCookies(true, 0) + " Christmas cookies! Yum!");
+        </code></pre>
+        <p style="margin-left:40px">This will print out: "We've eaten 35 Christmas cookies! Yum!"</p>
+        <p style="margin-left:40px">Here's how we got to 35:</p>
+        <p style="margin-left:40px">When we first call our function, it returns 5 + eatChristmasCookies(true, 5); Since what we're returning contains a call to this function, we go back in and see what that call returns, and continue like this until we reach the base case and stop calling the function. Once we reach this base case, we substitute this value in for the previous call of the function in its return statement and follow this pattern until we've gotten through it all. When we do that, we're popping the last frame we added off our stack in memory. Here's one way to keep track of what's returned:</p>
+        <p style="margin-left:5em">5 + eatChristmasCookies(true, 5)</p>
+        <p style="margin-left:7em">10 + eatChristmasCookies(true, 10)</p>
+        <p style="margin-left:10em">10 + eatChristmasCookies(false, 10)</p>
+        <p style="margin-left:13em">10</p>
+        <p style="margin-left:40px">Now that we've hit the end we can start filling our values in and going back up. We do this by replacing the function call with what it returns:</p>
+            <p style="margin-left:5em">5 + eatChristmasCookies(true, 5)</p>
+            <p style="margin-left:7em">10 + eatChristmasCookies(true, 10)</p>
+            <p style="margin-left:10em">10 + 10</p>
+        <p style="margin-left:40px">We'll keep moving up.</p>
+            <p style="margin-left:5em">5 + eatChristmasCookies(true, 5)</p>
+            <p style="margin-left:7em">10 + 10 + 10</p>
+        <p style="margin-left:40px">We're still going back up until we hit the top.</p>
+            <p style="margin-left:5em">5 + 10 + 10 + 10</p>
+        <p style="margin-left:40px">This evaluates to 35! We did it!</p>
+        <p style="margin-left:40px">Note: the return statements in the else if block and the final else block are the same, so we could've just said it once at the end of our function to do the same thing:</p>
+        <!-- <p style="margin-left:40px; color:#7BAFD4">function eatChristmasCookies(stillHungry: boolean, numCookiesEaten: number): number {</p>
+            <p style="margin-left:5em; color:#7BAFD4">if (!stillHungry) {</p>
+                <p style="margin-left:7em; color:#7BAFD4">return numCookiesEaten;</p>
+                <p style="margin-left:7em; color:#7BAFD4">// this is our base case! Here, we're not calling our function, but just returning numCookiesEaten.</p>
+            <p style="margin-left:5em; color:#7BAFD4">} else if (numCookiesEaten >= 10) {</p>
+                <p style="margin-left:7em; color:#7BAFD4">stillHungry = false;</p>
+            <p style="margin-left:5em; color:#7BAFD4">} else {</p>
+                <p style="margin-left:7em; color:#7BAFD4">numCookiesEaten += 5;</p>
+            <p style="margin-left:5em; color:#7BAFD4">}</p>
+            <p style="margin-left:5em; color:#7BAFD4">return numCookiesEaten + eatChristmasCookies(stillHungry, numCookiesEaten);</p>
+            
+        <p style="margin-left:40px; color:#7BAFD4">}</p> -->
+        <pre><code>
+            function eatChristmasCookies(stillHungry: boolean, numCookiesEaten: number): number {
+                if (!stillHungry) {
+                    return numCookiesEaten;
+                } else if (numCookiesEaten >= 10) {
+                    stillHungry = false;
+                } else {
+                    numCookiesEaten += 5;
+                }
+                return numCookiesEaten + eatChristmasCookies(stillHungry, numCookiesEaten);
+            }
+        </code></pre>
+        <p style="margin-left:40px">Both ways of writing the function accomplish the same thing. Writing the recursive return statement separately in both the else if and the else block helps us keep track of which cases are our base cases and which are our recursive cases, which can help us make sure we don't forget to include a base case. However, writing it as one recursive return statement at the end is more concise.</p>
+
+        <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+        <ul>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/functions">COMP110 Video for Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/arguments-parameters-and-if-then-else-statements">COMP110 Video for Arguments and Parameters</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/functions-that-return-values">COMP110 Video for Functions that Return Values</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/using-functions-that-have-already-been-declared">COMP110 Video for Using Functions That Have Already Been Declared</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/recursion-1">COMP110 Video for Recursion</a></li>
+                
+
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.typescriptlang.org/docs/handbook/functions.html">TypeScript Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/function-void">COMP110 Topics Page on Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/recursion-1">COMP110 Topics Page on Recursion</a></li>
+                
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/02-Functions.pdf">COMP110 Lecture Slides on Functions (void)</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/04-Expressions-and-Functions-that-Return.pdf">COMP110 Lecture Slides on Functions that Return</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/19-Anonymous-Functions-and-Events.pdf">COMP110 Lecture Slides on Anonymous Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/15-Recursion.pdf">COMP110 Lecture Slides on Recursion</a></li>
+                
+                
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-0.pdf">COMP110 Review Slides on Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-1.pdf">COMP110 Review Slides on Functions and Return Values</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-9.pdf">COMP110 Review Slides on Anonymous Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-7.pdf">COMP110 Review Slides on Recursion</a></li>
+                
+
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/worksheets/WS1-VoidFunctionsIfThenElse.pdf">COMP110 WS on Void Functions</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/WS2.pdf">COMP110 WS on Functions</a></li> 
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/COMP110-%E2%80%93-WS5.pdf">COMP110 WS on Recursion</a></li> 
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/110-2016-spring/WS6.pdf">Another COMP110 WS on Recursion</a></li> 
+                
+                
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-WS2.pdf">COMP110 Optional WS on Functions</a></li>    
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/study-guides/Study-Guide-3.pdf">COMP110 Optional WS on Function Definition and Function Calls</a></li>                                
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-WS4.pdf">COMP110 Optional WS on Function Return Types</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-01-spring/Review-Session-WS5.pdf">COMP110 Optional WS on Recursion</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Optional-WS8.pdf">Another COMP110 Optional WS on Recursion</a></li>
+                
+                
+                <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+                <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+                </ul>
+        
+
+
+
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+            
+
+            </div>
+
+</body>
+</html>

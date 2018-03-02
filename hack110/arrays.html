@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arrays</title>
+    
+    <!-- <link rel="stylesheet" type="text/css" href="./style.css"> -->
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap's Style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/jpg" href="http://comp110.com/images/old-well.jpg">
+    
+
+
+</head>
+<body>
+    <div class="w-80">
+
+        <nav class="navbar sticky-top navbar-light" style="background-color:#7BAFD4">
+            <a class="navbar-brand" style="color:white" href="http://apps.introcs.com/hubermm/hack110/review.html">
+              <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+              COMP110 Review
+            </a>
+            <!-- <img src="http://comp110.com/images/old-well.jpg" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+            
+            <a class="navbar-brand" style="color:white" href="http://comp110.com/">COMP110.com</a>
+          </nav>
+
+
+
+<br>
+    <h1 style="font-family:Franklin Gothic FS Book; color:#7BAFD4; text-align:center">Arrays and Multidimensional Arrays</h1>
+<div style="margin-left:10px; margin-right:10px">
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Overview</h2>
+    <p style="margin-left:40px">Arrays are lists that will hold things for us. They can hold a bunch of things at once, and they are reference types.</p>
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Description</h2>
+    <p style="margin-left:40px">Arrays hold a bunch of elements as in a list. They are indexed beginning at 0. There is a separate element at each index, and you are allowed to have elements repeat. </p>
+    <p style="margin-left:40px">The elements we put in our array can be whatever we want-value types or reference types.</p>
+    <p style="margin-left:40px">We can think of arrays in many different ways, so we'll have some fun with this. We'll think of arrays in terms of a grocery store.</p>
+    <p style="text-align:center"><img src="https://i1.wp.com/happyfamilyblog.com/wp-content/uploads/2017/10/img_2148.jpg" width="210" height="210" alt="sign" style="margin-left:40px"></p>
+    <p style="margin-left:40px">Some grocery stores conveniently mark their aisles with signs that number the aisles and describe what each aisle contains. We'll use these to help us understand what an array is and how it works.</p>
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">How We Use Arrays</h2>
+    <p style="margin-left:40px">The signs marking grocery store aisles are great because they tell us information about what's in the aisle. As we know, types help us with this in our code. Just like everything else, when we make an array we must give it a type. Then, we can start to fill in the array we make. Typescript arrays are nice because we can always add onto them if we want, and there're a lot of other cool things we can do with them, too. Here's how we make one:</p>
+    <!-- <p style="margin-left:60px">let arrayName: type[] = [];</p> -->
+    <pre><code>
+        let arrayName: type[] = [];
+    </code></pre>
+    <p style="margin-left:40px">Just like when we make other variables, we made sure to give a type. This type included the square brackets ([]) which tell us it's an array. We then initialized it in the same line (like we can with other variables). We initialized it to be an empty array.</p>
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Examples</h2>
+    <p style="margin-left:40px">The labels on our aisle sign are colas, potato chips, soft drinks, nuts, and snacks. We can handle this! These are pretty fun foods, so we could make a PartyFood class. Great! One thing we know about arrays is that we usually like to keep all our data within the array the same type. So, maybe all these foods fit within the PartyFood class, and our array can hold these foods by being an array of PartyFood objects. Here's how we'd do that:</p>
+    <!-- <p style="margin-left:60px">class PartyFood {
+        <p style="margin-left:5em">item: string;</p>
+        <p style="margin-left:5em">numberInStock: number = 0;</p>
+        <p style="margin-left:5em">constructor (item: string) {</p>
+            <p style="margin-left:7em">this.item = item;</p>
+            <p style="margin-left:5em">}</p>
+        <p style="margin-left:60px">}</p>
+    </p> -->
+    <pre><code>
+        class PartyFood {
+            item: string;
+            numberInStock: number = 0;
+            constructor(item: string) {
+                this.item = item;
+            }
+        }
+
+        let aisleEleven: PartyFood[] = [];
+    </code></pre>
+    <!-- <p style="margin-left:60px">let aisleEleven: PartyFood[] = [];</p> -->
+    <p style="margin-left:40px; color:#7BAFD4">With this, we've just created a PartyFood class that has an item property which is initialized in the constructor. We also created a new array (let aisleEleven: PartyFood[]) and initialized it (= []) all in one line. As we know, we could have broken this up into separate lines if we wanted to. Now we just need stuff to put in our array!</p>
+    <!-- <p style="margin-left:60px">let aCola: PartyFood = new PartyFood("cola");</p>
+    <p style="margin-left:60px">let aPotatoChip: PartyFood = new PartyFood("potato chips");</p>
+    <p style="margin-left:60px">let aSoftDrink: PartyFood = new PartyFood("soft drinks");</p>
+    <p style="margin-left:60px">let aNut: PartyFood = new PartyFood("nuts");</p>
+    <p style="margin-left:60px">let aSnack: PartyFood = new PartyFood("snacks");</p> -->
+    <pre><code>
+        let aCola: PartyFood = new PartyFood("cola");
+        let aPotatoChip: PartyFood = new PartyFood("potato chips");
+        let aSoftDrink: PartyFood = new PartyFood("soft drinks");
+        let aNut: PartyFood = new PartyFood("nuts");
+        let aSnack: PartyFood = new PartyFood("snacks");
+    </code></pre>
+    <p style="margin-left:40px; color:#7BAFD4">Now we have a bunch of PartyFood objects. Since our array is an array of PartyFood objects, we can use these objects we just made to fill our array!</p>
+    <!-- <p style="margin-left:60px">aisleEleven = [aCola, aPotatoChip, aSoftDrink, aSoftDrink];</p> -->
+    <pre><code>
+        aisleEleven = [aCola, aPotatoChip, aSoftDrink, aSoftDrink];
+    </code></pre>
+    <p style="margin-left:40px; color:#7BAFD4">Uh-oh! It looks like we accidentally put aSoftDrink in there twice instead of putting in aNut! Let's fix this by going in our array and accessing then reassigning what's in the specific index where we have our second aSoftDrink.</p>
+    <!-- <p style="margin-left:60px">aisleEleven[3] = aNut;</p> -->
+    <pre><code>
+        aisleEleven[3] = aNut;
+    </code></pre>
+    <p style="margin-left:40px; color:#7BAFD4">This is how we access a specific index in an array. This format (arrayName[indexNumber] = element;) lets us change the element stored at that index of the array. It's important to remember that arrays are zero-indexed, which is why changing the element at index 3 to be aNut puts in aNut in place of the second aSoftDrink. The modified array is [aCola, aPotatoChip, aSoftDrink, aNut].</p>
+    <p style="margin-left:40px; color:#7BAFD4">Oh no! We also forgot to add aSnack to our array! Turns out, we can just append it on the end of the array to get the job done. Here's how:</p>    
+    <!-- <p style="margin-left:60px">aisleEleven[aisleEleven.length] = aSnack;</p> -->
+    <pre><code>
+        aisleEleven[aisleEleven.length] = aSnack;
+    </code></pre>
+    <p style="margin-left:40px; color:#7BAFD4">Why aisleEleven.length? The array we were adding to had 4 elements in it (aCola, aPotatoChip, aSoftDrink, aNut). We also know arrays are zero-indexed, so aCola had an index of 0, aPotatoChip 1, aSoftDrink 2, and aNut 3. By saying aisleEleven[aisleEleven.length], this takes whatever the length of the array was (in this case 4) and makes that the index we are accessing. So this added the next index in which we put our aSnack element.</p>
+    <p style="margin-left:40px">So far, we've created an array holding objects, modified its contents, and added onto it, but there's still more we can do with arrays!</p>    
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Iterating through Arrays</h2>
+    <p style="margin-left:40px">Now we've got a nice aisle of party food, except that each item still has a numberInStock value of 0! We need to go through and stock the shelf so that there are three of each item. We'll want to access each element of the array and change its numberInStock property to 3 instead of 0. We can use a loop (yay!) to iterate through the array to have access to each element. To increase the numberInStock value from 0 to 3, we can either directly assign it the value of 3 or use another loop to increment one by one until we reach 3. Since we'd have to stock items one at a time, we'll use a loop to get to three.</p>
+    <!-- <p style="margin-left:60px">for (let i: number = 0; i < aisleEleven.length; i++) {
+        <p style="margin-left:5em">for (let count: number = aisleEleven[i].numberInStock; count <= 3; count++) {</p>
+        <p style="margin-left:7em">aisleEleven[i].numberInStock = count;</p>
+        <p style="margin-left:5em">}</p>
+        <p style="margin-left:60px">}</p>
+    </p> -->
+    <pre><code>
+        for (let i: number = 0; i < aisleEleven.length; i++) {
+            for (let count: number = aisleEleven[i].numberInStock; count <= 3; count++) {
+                aisleEleven[i].numberInStock = count;
+            }
+        }
+    </code></pre>
+    <p style="margin-left:40px">We just used nested for loops to iterate through our array and reassign each element's numberInStock property. We now know how to make an array, fill it, access and edit an element at a specific index, add an element to the array, and go through its elements one by one.</p>
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">2D Arrays</h2>
+    <p style="margin-left:40px">We can pretty much have arrays of any type, and we know we must specify this type upon creation of the array. This means we can have arrays of arrays! We can make a 2D array the same way as we made our previous array, but the type of our 2D array is now an array as well. Let's check out how we'd do this:</p>
+    <!-- <p style="margin-left:60px">let nameOfArray: type[][] = [];</p> -->
+    <pre><code>
+        let nameOfArray: type[][] = [];
+    </code></pre>
+    <p style="margin-left:40px">We've got this part down by now. Here, we haven't really done anything new, except that the type is now an array.</p>
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Examples with 2D Arrays</h2>
+    <p style="margin-left:40px">We'll go back to our grocery store with all the party food. Apparently, people love to party because our grocery store has decided it would like to add a special display for the PartyFood drinks, which will include cola and soft drinks. We know how to do this:</p>
+    <!-- <p style="margin-left:60px">let display: PartyFood[] = [aCola, aSoftDrink];</p>
+    <p style="margin-left:60px">for (let n: number = 0; n < display.length; n++) {
+        <p style="margin-left:5em">for (let count: number = display[n].numberInStock; count <= 6; count++) {</p>
+        <p style="margin-left:7em">display[n].numberInStock = count;</p>
+        <p style="margin-left:5em">}</p>
+        <p style="margin-left:60px">}</p>
+    </p> -->
+    <pre><code>
+        let display: PartyFood[] = [aCola, aSoftDrink];
+        for (let n: number = 0; n < display.length; n++) {
+            for (let count: number = display[n].numberInStock; count <= 6; count++) {
+                display[n].numberInStock = count;
+            }
+        }
+    </code></pre>
+    <p style="margin-left:40px; color:#7BAFD4">This is pretty much what we did before. We made an array then went through it to change the numberInStock to 6, since this is a big display. Great! Now we want to be able to put all our party foods together in one group to stay organized. Here's what we'll do:</p>
+    <!-- <p style="margin-left:60px">let allOurPartyFood: PartyFood[][] = [aisleEleven, display];</p> -->
+    <pre><code>
+        let allOurPartyFood: PartyFood[][] = [aisleEleven, display];
+    </code></pre>
+    <p style="margin-left:40px; color:#7BAFD4">Perfect! Now we've got an array of our PartyFood arrays. What now? Well, there's a big sale, and the store sells out of everything, so we need to update our numberInStock property for each object. We'll do so like this:</p>
+    <!-- <p style="margin-left:60px">for (let row: number = 0; row < allOurPartyFood.length; row++) {
+        <p style="margin-left:5em">for (let col: number = 0; col < allOurPartyFood[row].length; col++) {</p>
+        <p style="margin-left:7em">while (allOurPartyFood[row][col].numberInStock > 0) {</p>
+        <p style="margin-left:9em">allOurPartyFood[row][col].numberInStock--;</p>
+        <p style="margin-left:7em">}</p>
+        <p style="margin-left:5em">}</p>
+        <p style="margin-left:60px">}</p>
+    </p> -->
+    <pre><code>
+        for (let row: number = 0; row < allOurPartyFood.length; row++) {
+            for (let col: number = 0; col < allOurPartyFood[row].length; col++) {
+                while (allOurPartyFood[row][col].numberInStock > 0) {
+                    allOurPartyFood[row][col].numberInStock--;
+                }
+            }
+        }
+    </code></pre>
+    <p style="margin-left:40px">Okay! We made our 2D array and we've worked our way through it using loops. Now that 2D arrays (and arrays in general) are making sense, we'll know how to use them. Additionally, we know that if we wanted to, we could apply similar steps to make arrays with more than two dimensions.</p>
+    
+
+    <h2 style="font-family:Franklin Gothic FS Book; color:#7BAFD4">Related Resources</h2>
+    <ul>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/videos/arrays">COMP110 Video for Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/array">COMP110 Topics Page for Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/topics/loops/using-loops-and-arrays">COMP110 Topics Page for Using Loops and Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="https://www.tutorialspoint.com/typescript/typescript_arrays.htm">TypeScript Arrays on tutorialspoint</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/07-arrays-and-while-loops.pdf">COMP110 Lecture Slides on Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/08-Array-Algorithms-and-CSV-Processing.pdf">More COMP110 Lecture Slides on Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/09-Values-References-Exporting-Importing.pdf">Even More COMP110 Lecture Slides on Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/25-2D-Arrays.pdf">COMP110 Lecture Slides on 2D Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/slides/26-2D-Array-Practice.pdf">COMP110 Lecture Slides on 2D Array Practice</a></li>
+        
+        
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-3.pdf">COMP110 Review Slides on Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/WS3-1.pdf">COMP110 WS about Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/assignments/2d-arrays-oop-and-review">COMP110 WS with 2D Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Review-Session-WS4.pdf">COMP110 Optional WS with Arrays</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Midterm-Review-Optional-Worksheet.pdf">COMP110 Optional WS with Using Arrays and Loops</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://s3.amazonaws.com/comp110/2017-08-fall/Optional-WS8.pdf">COMP110 Optional WS with Arrays and 2D Arrays</a></li>
+        
+        
+        
+        <!-- <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://apps.introcs.com/hubermm/hack110/review.html">COMP110 Review Home</a></li>
+        <li><a style="font-family:Franklin Gothic FS Book; color:#7BAFD4" href="http://comp110.com/">COMP110.com</a></li> -->
+        </ul>
+    
+    
+    
+    </div>
+    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    
+    
+    </div>
+
+</body>
+</html>
