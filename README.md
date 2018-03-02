@@ -1,2 +1,4 @@
 # hack110
-Hackathon personal study guide personal project
+these are my features
+this is how i executed those features
+this is what i want to do in the future with this project
